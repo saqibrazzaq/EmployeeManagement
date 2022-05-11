@@ -9,3 +9,9 @@
   - Repository - Base and user repository classes, seed data
   - Service.Contracts - ServiceManager and user service interfaces
   - Service - ServiceManager and user service classes
+- Add Get controller
+  - Employees.Presentation - Controllers for endpoints
+  - GetAllCompanies() method in repository, service and controller
+  - Shared project with DataTransferObjects folder
+  - CompanyDto
+  - AutoMapper - Map Company to CompanyDto

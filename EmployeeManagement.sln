@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagement.API", "EmployeeManagement.API\EmployeeManagement.API.csproj", "{CEBF94CF-D5ED-42F7-84F1-CCEF50282658}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Employees", "EmployeeManagement.API\Employees.csproj", "{CEBF94CF-D5ED-42F7-84F1-CCEF50282658}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "Contracts\Contracts.csproj", "{8819C733-3ADF-4E3B-8D47-9EA877C0B3D7}"
 EndProject
@@ -16,6 +16,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Contracts", "Service.Contracts\Service.Contracts.csproj", "{3BC130EC-BC01-466E-8566-B4957CCAA9C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{EC9F3F93-9AFC-4A3B-B912-0071F7C64FB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employees.Presentation", "Employees.Presentation\Employees.Presentation.csproj", "{F98A15BC-6C10-4404-852A-97168173ED19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{2BE41A92-0B72-4DDC-9AF8-F2A054E48E0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,14 @@ Global
 		{EC9F3F93-9AFC-4A3B-B912-0071F7C64FB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC9F3F93-9AFC-4A3B-B912-0071F7C64FB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC9F3F93-9AFC-4A3B-B912-0071F7C64FB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F98A15BC-6C10-4404-852A-97168173ED19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F98A15BC-6C10-4404-852A-97168173ED19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F98A15BC-6C10-4404-852A-97168173ED19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F98A15BC-6C10-4404-852A-97168173ED19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BE41A92-0B72-4DDC-9AF8-F2A054E48E0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BE41A92-0B72-4DDC-9AF8-F2A054E48E0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BE41A92-0B72-4DDC-9AF8-F2A054E48E0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BE41A92-0B72-4DDC-9AF8-F2A054E48E0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
