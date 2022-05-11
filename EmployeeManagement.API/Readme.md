@@ -1,3 +1,11 @@
 ﻿## Steps
 - Add extension method for cors
-- Add NLog (contract + separate service project)
+- Add projects for NLog
+  - Contracts - contains interfaces
+  - LoggerService - contains logging using NLog
+- Add projects for service and repositories
+  - Contracts - Base and user repository interfaces
+  - Entities - Data model classes for creating database
+  - Repository - Base and user repository classes, seed data
+  - Service.Contracts - ServiceManager and user service interfaces
+  - Service - ServiceManager and user service classes
