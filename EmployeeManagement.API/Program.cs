@@ -1,4 +1,6 @@
+using Contracts;
 using EmployeeManagement.API.Extensions;
+using Employees.Extensions;
 using NLog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +21,9 @@ builder.Services.AddControllers()
     .AddApplicationPart(typeof(Employees.Presentation.AssemblyReference).Assembly);
 
 var app = builder.Build();
+
+var logger = app.Services.GetRequiredService<ILoggerManager>();
+app.ConfigureExceptionHandler(logger);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

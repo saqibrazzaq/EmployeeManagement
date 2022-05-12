@@ -15,3 +15,6 @@
   - Shared project with DataTransferObjects folder
   - CompanyDto
   - AutoMapper - Map Company to CompanyDto
+- Global exception handler
+  - No try catch blocks needed anywhere
+  - All exceptions will be handled and logged using middleware
