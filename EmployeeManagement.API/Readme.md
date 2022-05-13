@@ -19,3 +19,4 @@
   - No try catch blocks needed anywhere
   - All exceptions will be handled and logged using middleware
 - All employees and single employee within a company
+- csv formatter for companies
