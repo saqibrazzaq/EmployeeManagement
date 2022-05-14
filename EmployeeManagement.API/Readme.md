@@ -28,3 +28,10 @@
 - Delete company
   - Delete single company
   - Delete cascade company with all employees
+- Update company
+  - Update single company
+  - Update with track changes ON
+  - No need to call Repository.Update because it updates all columns
+  - Get data with track changes ON
+  - Move updates from Dto to Entity using AutoMapper
+  - Call repository.save(), it will only update which are CHANGED (with track changes)

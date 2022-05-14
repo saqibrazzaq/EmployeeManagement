@@ -81,5 +81,29 @@ namespace Service
             var employeesDto = _mapper.Map<IEnumerable<EmployeeDto>>(employees);
             return employeesDto;
         }
+
+        public void UpdateEmployeeForCompany(Guid companyId, Guid id, 
+            EmployeeForUpdateDto employeeForUpdate, bool trackChanges, bool empTrackChanges)
+        {
+            var company = _repository.Company.GetCompany(companyId, trackChanges);
+            if (company == null)
+                throw new CompanyNotFoundException(companyId);
+
+            var employeeEntity = _repository.Employee.GetEmployee(
+                companyId, id, empTrackChanges);
+            if (employeeEntity is null)
+                throw new EmployeeNotFoundException(id);
+
+            // Move changes from Dto to Entity
+            _mapper.Map(employeeForUpdate, employeeEntity);
+            // Save in repository, without calling Repository.Update
+            // It works because of trackChanges
+            // GetEmployee method returns entity, with trackChanges ON for employee
+            // If we call Save() method of repository, it automatically saves tracked changes
+            // If we call Repository.Update(), it will update the whole record
+            // Just Get entity, update entity with trackChanges, Save,
+            // it will only update the modified columns
+            _repository.Save();
+        }
     }
 }
