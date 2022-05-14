@@ -35,3 +35,7 @@
   - Get data with track changes ON
   - Move updates from Dto to Entity using AutoMapper
   - Call repository.save(), it will only update which are CHANGED (with track changes)
+- Validation
+  - Add validation in create and update dto classes
+  - Add validation code in ManipulateDto and make it abstract
+  - Create and Update Dtos inherit ManipulationDto, so that same validation is at central

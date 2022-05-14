@@ -40,6 +40,9 @@ namespace Employees.Presentation.Controllers
             if (employee == null)
                 return BadRequest("Employee is null.");
 
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
+
             var employeeToReturn = _service.EmployeeService
                 .CreateEmployeeForCompany(companyId, employee, trackChanges: false);
 
@@ -61,6 +64,9 @@ namespace Employees.Presentation.Controllers
         {
             if (employee is null)
                 return BadRequest("Employee is null.");
+
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
 
             _service.EmployeeService.UpdateEmployeeForCompany(companyId, id, employee,
                 trackChanges: false, empTrackChanges: true);
