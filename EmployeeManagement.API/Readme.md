@@ -25,3 +25,6 @@
   - Single company with new employees
   - Multiple companies
   - Get multiple companies
+- Delete company
+  - Delete single company
+  - Delete cascade company with all employees
