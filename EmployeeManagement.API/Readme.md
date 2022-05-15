@@ -55,3 +55,7 @@
   - Add filtering in GetEmployees class. MinAge and MaxAge
   - Check valid age range in service
   - Add search in repository
+- Searching
+  - Extend EmployeesRepository class and add extension methods for Filter and Search
+  - string lower case conversions for search done in extension methods
+  - where condition applied in extension methods
