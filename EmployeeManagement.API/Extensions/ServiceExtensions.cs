@@ -19,7 +19,8 @@ namespace EmployeeManagement.API.Extensions
                     builder
                     .AllowAnyOrigin() // WithOrigins("https://www.website.com")
                     .AllowAnyMethod()
-                    .AllowAnyHeader();
+                    .AllowAnyHeader()
+                    .WithExposedHeaders("X-Pagination");
                 });
             });
         }

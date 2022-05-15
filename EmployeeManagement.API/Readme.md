@@ -43,3 +43,11 @@
   - Create new class for checking null Dto and validation
   - Use ServiceFilter attribute in controller for null and model validation
   - No need to check null and if (ModelState.IsValid) in any controller
+- Pagination
+  - Add PagedList with MetaData
+  - MetaData contains page number, size, next, previous, total count
+  - Add RequestParameters class with current page and page size with defaults
+  - Repository method returns PagedList instead of ienumerable
+  - Service method returns IEnumerable of dto and Metadata
+  - Controller returns IEnumerable of dto and adds metadata in X-Pagination header
+  - Add X-Pagination in cors config
