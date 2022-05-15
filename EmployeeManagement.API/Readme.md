@@ -39,3 +39,7 @@
   - Add validation in create and update dto classes
   - Add validation code in ManipulateDto and make it abstract
   - Create and Update Dtos inherit ManipulationDto, so that same validation is at central
+- ActionFilters
+  - Create new class for checking null Dto and validation
+  - Use ServiceFilter attribute in controller for null and model validation
+  - No need to check null and if (ModelState.IsValid) in any controller

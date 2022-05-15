@@ -1,5 +1,6 @@
 ﻿using Contracts;
 using Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,18 +26,18 @@ namespace Repository
             Delete(employee);
         }
 
-        public Employee GetEmployee(Guid companyId, Guid employeeId, bool trackChanges)
+        public async Task<Employee> GetEmployeeAsync(Guid companyId, Guid employeeId, bool trackChanges)
         {
-            return FindByCondition(e => 
+            return await FindByCondition(e => 
                 e.CompanyId.Equals(companyId) && e.Id.Equals(employeeId),trackChanges)
-                .SingleOrDefault();
+                .SingleOrDefaultAsync();
         }
 
-        public IEnumerable<Employee> GetEmployees(Guid companyId, bool trackChanges)
+        public async Task<IEnumerable<Employee>> GetEmployeesAsync(Guid companyId, bool trackChanges)
         {
-            return FindByCondition(e => e.CompanyId.Equals(companyId), trackChanges)
+            return await FindByCondition(e => e.CompanyId.Equals(companyId), trackChanges)
                 .OrderBy(e => e.Name)
-                .ToList();
+                .ToListAsync();
         }
     }
 }

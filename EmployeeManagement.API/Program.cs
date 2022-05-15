@@ -1,6 +1,7 @@
 using Contracts;
 using EmployeeManagement.API.Extensions;
 using Employees.Extensions;
+using Employees.Presentation.ActionFilters;
 using Microsoft.AspNetCore.Mvc;
 using NLog;
 
@@ -22,6 +23,8 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
     options.SuppressModelStateInvalidFilter = true;
 });
+
+builder.Services.AddScoped<ValidationFilterAttribute>();
 
 builder.Services.AddControllers(config =>
 {
