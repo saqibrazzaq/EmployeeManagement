@@ -51,3 +51,7 @@
   - Service method returns IEnumerable of dto and Metadata
   - Controller returns IEnumerable of dto and adds metadata in X-Pagination header
   - Add X-Pagination in cors config
+- Filtering
+  - Add filtering in GetEmployees class. MinAge and MaxAge
+  - Check valid age range in service
+  - Add search in repository
