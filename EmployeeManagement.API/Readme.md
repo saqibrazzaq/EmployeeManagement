@@ -59,3 +59,8 @@
   - Extend EmployeesRepository class and add extension methods for Filter and Search
   - string lower case conversions for search done in extension methods
   - where condition applied in extension methods
+- Sorting
+  - Add Sort method in EmployeeRepositoryExtension class
+  - Create a generic method in OrderQueryBuilder.CreateOrderQuery
+  - This generic method can sort generate order query for any entity
+ 
