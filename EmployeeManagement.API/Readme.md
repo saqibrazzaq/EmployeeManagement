@@ -67,3 +67,14 @@
   - Add DataShaper class, which uses Reflection API
   - Pass fields comma separated string in query string param
   - Convert fields to Properties and fetch properties from Dto which are in params
+- Authentication
+  - Use EFCore Identity
+  - RepositoryContext uses IdentityDbContext<User>
+  - Create User in entities, inherits from IdentityUser
+  - Add extension method to services.AddIdentity, pass user and role
+  - Add UserForRegistrationDto and UserForAuthenticationDto records
+  - RegisterUser takes user, password, name, email, phone and registers user
+  - AuthenticateUser takes user and password, validates from db using user manager
+  - if login successful, generate signed token and send to the client
+  - Add [Authorize] to controllers which need authentication and roles
+  - Test with different users with different roles

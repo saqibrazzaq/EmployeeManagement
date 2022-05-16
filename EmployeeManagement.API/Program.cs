@@ -1,5 +1,4 @@
 using Contracts;
-using EmployeeManagement.API.Extensions;
 using Employees.Extensions;
 using Employees.Presentation.ActionFilters;
 using Microsoft.AspNetCore.Mvc;
@@ -41,6 +40,10 @@ builder.Services.AddControllers(config =>
 builder.Services.AddControllers()
     .AddApplicationPart(typeof(Employees.Presentation.AssemblyReference).Assembly);
 
+builder.Services.AddAuthentication();
+builder.Services.ConfigureIdentity();
+builder.Services.ConfigureJWT(builder.Configuration);
+
 var app = builder.Build();
 
 var logger = app.Services.GetRequiredService<ILoggerManager>();
@@ -61,6 +64,7 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 
 app.UseCors("CorsPolicy");
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
