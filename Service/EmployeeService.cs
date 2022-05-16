@@ -7,6 +7,7 @@ using Shared.DataTransferObjects;
 using Shared.RequestFeatures;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,13 +19,16 @@ namespace Service
         private readonly IRepositoryManager _repository;
         private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
-        public EmployeeService(IRepositoryManager repository, 
+        private readonly IDataShaper<EmployeeDto> _shaper;
+        public EmployeeService(IRepositoryManager repository,
             ILoggerManager logger,
-            IMapper mapper)
+            IMapper mapper, 
+            IDataShaper<EmployeeDto> shaper)
         {
             _repository = repository;
             _logger = logger;
             _mapper = mapper;
+            _shaper = shaper;
         }
 
         public async Task<EmployeeDto> CreateEmployeeForCompanyAsync(Guid companyId, EmployeeForCreationDto employeeForCreation, bool trackChanges)
@@ -63,7 +67,7 @@ namespace Service
             return employeeDto;
         }
 
-        public async Task<(IEnumerable<EmployeeDto> employees, MetaData metaData)> 
+        public async Task<(IEnumerable<ExpandoObject> employees, MetaData metaData)> 
             GetEmployeesAsync(
             Guid companyId, EmployeeParameters employeeParameters, bool trackChanges)
         {
@@ -75,7 +79,8 @@ namespace Service
             var employeesWithMetaData = await _repository.Employee.GetEmployeesAsync(
                 companyId, employeeParameters, trackChanges);
             var employeesDto = _mapper.Map<IEnumerable<EmployeeDto>>(employeesWithMetaData);
-            return (employees: employeesDto, metaData: employeesWithMetaData.MetaData);
+            var shapedData = _shaper.ShapeData(employeesDto, employeeParameters.Fields);
+            return (employees: shapedData, metaData: employeesWithMetaData.MetaData);
         }
 
         public async Task UpdateEmployeeForCompanyAsync(Guid companyId, Guid id, 

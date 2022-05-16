@@ -63,4 +63,7 @@
   - Add Sort method in EmployeeRepositoryExtension class
   - Create a generic method in OrderQueryBuilder.CreateOrderQuery
   - This generic method can sort generate order query for any entity
- 
+- DataShaper
+  - Add DataShaper class, which uses Reflection API
+  - Pass fields comma separated string in query string param
+  - Convert fields to Properties and fetch properties from Dto which are in params
