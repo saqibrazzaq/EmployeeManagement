@@ -1,5 +1,6 @@
 ﻿using Contracts;
 using Employees;
+using Entities.ConfigurationModels;
 using Entities.Models;
 using LoggerService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -83,7 +84,9 @@ namespace Employees.Extensions
         public static void ConfigureJWT(this IServiceCollection services,
             IConfiguration configuration)
         {
-            var jwtSettings = configuration.GetSection("JwtSettings");
+            var jwtConfiguration = new JwtConfiguration();
+            configuration.Bind(jwtConfiguration.Section, jwtConfiguration);
+
             var secretKey = Environment.GetEnvironmentVariable("SECRET_EMPLOYEE_MANAGEMENT_API");
             //Console.WriteLine("secret key: " + secretKey);
             services.AddAuthentication(opt =>
@@ -99,12 +102,18 @@ namespace Employees.Extensions
                         ValidateAudience = true,
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
-                        ValidIssuer = jwtSettings["validIssuer"],
-                        ValidAudience = jwtSettings["validAudience"],
+                        ValidIssuer = jwtConfiguration.ValidIssuer,
+                        ValidAudience = jwtConfiguration.ValidAudience,
                         IssuerSigningKey = new SymmetricSecurityKey(
                             Encoding.UTF8.GetBytes(secretKey))
                     };
                 });
+        }
+
+        public static void AddJwtConfiguration(this IServiceCollection services,
+            IConfiguration configuration)
+        {
+            services.Configure<JwtConfiguration>(configuration.GetSection("JwtSettings"));
         }
     }
 }
